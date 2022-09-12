@@ -1,0 +1,217 @@
+<html layout:decorate="~{layout}" xmlns:th="http://www.thymeleaf.org">
+<div layout:fragment="content" class="container">
+<div class="row justify-content-center mt-4">
+	<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="검색어를 입력해주세요.">
+                    </div>
+                    <button type="submit" class="btn btn-default"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+					  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+					</svg></button>
+                </form>
+      </div>
+    <hr style="margin:0; padding:0">
+
+	<div class="col-lg-12">
+    	<div class="row">
+           <div class="col-md-12 form-group mt-3 mt-md-0">
+              <h5 style="font-weight:bold">
+              	<a th:href="@{|/project/list|}" th:text="${project.pCate}"></a>
+              </h5>
+           </div><br>
+           <h1 style="text-align:center; font-weight:bold"
+           		th:text="${project.pName}"
+           >
+           </h1>
+
+               <!-- 캐러셀 -->
+	    <div class="col-lg-8">
+	    	<div id="carousel-example-generic" class="carousel slide" style="top:10px; width:700px; height:500px">
+	            <ol class="carousel-indicators">
+	                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	            </ol>
+
+	            <div class="carousel-inner">
+	                <div class="item active">
+	                    <img th:src="|/uploadfile/${project.ImgIdR.imgOriName}|" style="width:700px; height:500px" alt="f">
+	                </div>
+	                <div class="item">
+	                    <img src="/img/tumble1.png" style="width:700px; height:500px" alt="f">
+	                </div>
+	                <div class="item">
+	                    <img src="/img/tumble2.png" style="width:700px; height:500px" alt="f">
+	                </div>
+	            </div>
+
+	            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+	                <span class="icon-prev"></span>
+	            </a>
+	            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+	                <span class="icon-next"></span>
+	            </a>
+	   		</div>
+	   </div>
+	   <div class="col-lg-4">
+		   <h4>모인금액</h4>
+			<h1 style="display:inline-block">3,274,000</h1>원  
+			<h3 style="display:inline-block">654%</h3>
+			<h4>남은시간</h4>
+			<h1 style="display:inline-block">5</h1>일
+			<h4>후원자</h4>
+			<h1 style="display:inline-block">64</h1>명
+			<hr>
+			<h5 style="display:inline-block">목표금액</h5> <span th:text="${project.pGoal}"></span> <br>
+			<h5 style="display:inline-block">펀딩 기간</h5> <span th:text="${project.pSdate}"></span> ~ <span th:text="${project.pEdate}"></span> <br>
+			<div style="display:inline-block; border:1px solid black">5일 남음</div><br>
+			<h5 style="display:inline-block">결제</h5>	목표금액 달성시 2022.09.08에 결제 진행<br>
+			<a th:href="@{/project/list}" class="btn btn-default">♡</a> &nbsp;&nbsp;
+			<a th:href="@{/project/list}" class="btn btn-default">이 프로젝트 후원하기</a>
+	   </div>
+    </div>
+    <br>
+
+    <div class="col-lg-12">
+    	<div class="row">
+    		<div class="collapse navbar-collapse navbar-ex1-collapse">
+		                <ul class="nav navbar-nav d-flex flex-row">
+		                    <li class="active">
+		                        <a href="project_detail.html">프로젝트 계획</a>
+		                    </li>
+		                    <li>
+		                        <a th:href="@{|/project/update/${project.pId}|}">업데이트</a>
+		                    </li>
+		                </ul>
+		    </div>
+
+		    <div class="col-lg-8">
+	    		<div class="collapse navbar-collapse navbar-ex1-collapse">
+	                <ul class="nav navbar-nav d-flex flex-row">
+	                    <li class="active">
+	                        <a href="#">소개</a>
+	                    </li>
+	                    <li>
+	                        <a href="#">예산</a>
+	                    </li>
+	                    <li>
+	                        <a href="#">일정</a>
+	                    </li>
+	                    <li>
+	                        <a href="#">팀 소개</a>
+	                    </li>
+	                    <li>
+	                        <a href="#">선물 설명</a>
+	                    </li>
+	                </ul>
+	    		</div>
+
+	    		<h4>| 프로젝트 소개</h4><br>
+	    		<div th:text="${project.pDesc}">
+	    		</div>
+
+				<hr>
+
+				<h4>| 프로젝트 예산</h4><br>
+				목표 금액은 아래의 지출 항목으로 사용할 예정입니다.
+				<ul>
+					<li>인건비 - 10만원</li>
+					<li>배송비-   5만원</li>
+					<li>재료비-  25만원</li>
+					<li>패키징 재료비- 10만원</li>
+				</ul>
+
+				<hr>
+
+				<h4>| 프로젝트 일정</h4><br>
+				<ul>
+					<li>7월 3일: 디자인, 모델링 및 시제품 제작</li>
+					<li>8월 24일: 펀딩 시작일</li>
+					<li>9월 07일: 펀딩 종료일</li>
+					<li>9월 08일: 제품 제작 시작 </li>
+					<li>9월 14일: 후가공 처리 및 포장 작업</li>
+					<li>9월 14-19일: 제품 예상 전달일</li>
+				</ul>
+
+				<hr>
+
+				<h4>| 프로젝트 팀 소개</h4><br>
+				<div style="text-align:center" th:text="${project.pCreator}">
+				</div>
+
+				<hr>
+
+				<h4>| 선물 설명</h4><br>
+				<div style="text-align:center">
+					<h3>달 반지 세트-얼리버드 (20개 한정)</h3>
+					<h4>49000원 ▶ 45000원 (4000원 할인)</h4>
+					<br>
+					달 반지 x1
+					<br>
+					나의 별자리 각인 x1
+					<br>
+					BNHR 패키징 x1
+					<br>
+					무료 배송 
+					<br>
+					유광 or 무광 선택 x1
+					<br><br><br><br>
+				</div>
+	    	</div>
+
+	    	<!-- side -->
+	    	<div class="col-lg-4">
+	    		<div style="border:1px solid black">
+	    			<h5>창작자 소개</h5>
+					<h5>BNHR, 보느헤르</h5>
+					<h5>세상의 모든 디자인, 장신구로 만들다.
+					'보느헤르'란 프랑스어로 행복이란 뜻을 가진 단어로 우리가 만든 장신구로 행복을 드리겠다는 의미입니다.</h5>
+					<button type="submit" class="btn btn-default">창작자에게 문의</button>
+	    		</div>
+	    		<br>
+	    		<h5>선물선택</h5>
+	    		<a th:href="@{/project/invest}">
+	    			<div style="border:1px solid black">
+	    				<h2>1000+</h2>
+						<h5>선물 없이 후원하기</h5>
+	    			</div>
+	    		</a><br>
+	    		<a th:href="@{/project/list}">
+	    			<div style="border:1px solid black">
+	    			<h5>v 15명이 선택</h5>
+					<h2>45,000+</h2>
+					<h5>달 반지- 얼리버드 세트</h5>
+					<ul>
+						<li>달 반지 ( x 1 )</li>
+						<li>BNHR 패키지 ( x 1 )</li>
+						<li>별자리 각인 ( x 1 )</li>
+						<li>무료 배송 ( x 1 )</li>
+						<li>유광 무광 ( x 1 )</li>
+					</ul>
+	    		</div>
+	    		</a><br>
+	    		<a th:href="@{/project/list}">
+	    			<div style="border:1px solid black">
+	    			<h5>v 8명이 선택</h5>
+					<h2>89,000+</h2>
+					<h5>달 반지, 별 반지 커플세트-얼리버드</h5>
+					<ul>
+						<li>달 반지 ( x 1 )</li>
+						<li>별 반지 ( x 1 )</li>
+						<li>BNHR 패키지 ( x 2 )</li>
+						<li>별자리 각인 ( x 2 )</li>
+						<li>무료 배송 ( x 2 )</li>
+						<li>유광 무광 ( x 2 )</li>
+					</ul>
+	    		</div>
+	    		</a>
+	    	</div>
+
+    	</div>
+    </div>
+
+</div>
+</div>
+</div>
+</html>

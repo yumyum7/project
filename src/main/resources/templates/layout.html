@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <!-- tumblcat CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="/css/notice.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/css/profile.css" rel="stylesheet"> -->
+    <link href="/css/setting_account_a.css" rel="stylesheet" type="text/css" />
+    <link href="/css/setting_account_b.css" rel="stylesheet" type="text/css" />
+    <link href="/css/setting_address_a.css" rel="stylesheet" type="text/css" />
+    <link href="/css/setting_address_b.css" rel="stylesheet" type="text/css" />
+    <link href="/css/setting_notice_a.css" rel="stylesheet">
+    <link href="/css/setting_notice_b.css" rel="stylesheet" type="text/css" />
+    <link href="/css/header.css" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" rel="stylesheet" type="text/css" />
+    <title>Hello, TumblCat!</title>
+</head>
+<body>
+<header th:replace="header :: headerFragment"></header>
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+<th:block layout:fragment="content"></th:block>
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<footer th:replace="footer :: footerFragment"></footer>
+</body>
+</html>

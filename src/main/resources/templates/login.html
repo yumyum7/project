@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/login.css" rel="stylesheet">
+    <script src="/js/login.js"></script>
+</head>
+<body class="background">
+    <div>
+        <div class="login-form">
+            <div class="login-content">
+                <h2><a th:href="@{/project/list}">tumblcat</a></h2>
+                <div class="header">
+                    <div class="title">
+                        로그인하고<br>
+                    </div>
+                    <div>
+                        <b>세상에서 하나뿐인 <br>특별한 프로젝트를 발견해보세요</b>
+                    </div>
+                </div>
+
+                
+                <div class="content">
+                    <form th:action="@{/account/signin}" method="post">
+                    
+                    <div th:if="${param.error}">
+            <div class="alert alert-danger">
+                사용자ID 또는 비밀번호를 확인해 주세요.
+            </div>
+        </div>
+                        <span>이메일주소</span><br>
+                        <div >
+                            <input type="email" name="username" id="email" class="input" onkeyup='email_func()' placeholder="이메일 주소를 입력해주세요"><br>
+                        </div>
+                        <div id='email_error' class="result"></div>
+                        <span>비밀번호</span><br>
+                        <div>
+                            <input type="password" id="pwd" name="password" class="input" placeholder="비밀번호를 입력해주세요"><br>
+                        </div>
+                        <input type="submit" value="로그인">
+                    </form>
+                </div>
+                <div class="footer">
+                    <span style="margin: 0 0;">아직 텀블캣 계정이 없으신가요?<a th:href="@{/account/signup}">회원가입</a></span><br>
+                    <span style="margin: 0 0;">혹시 비밀번호를 잊으셨나요?<a th:href="@{/account/findpwd}">비밀번호재설정</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

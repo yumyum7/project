@@ -1,0 +1,68 @@
+
+
+#header_part a {
+  text-decoration: none;
+  color: #57523E;
+}
+
+
+#header_part header{
+            width: 100%;
+            height: 100px;
+}
+        
+#header_part #menu{
+  position:relative; 
+  z-index: 99; 
+  background-color: white;
+  height: 50px;
+  text-align: center;
+}
+
+#header_part [class*="main"] {
+  background-color: white;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#header_part [class*="main"] ul {
+  border-radius: 5px 5px 5px 5px;
+  border: 1px solid #57523E;
+}
+
+#header_part .main1{
+  padding-left: 0px;
+  height: 100%;
+  width: 1000px;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+
+#header_part .main1>li {
+  float: left;
+  width: 13%;
+  line-height: 50px;
+ position: relative ;    /* 이거지우면 가로 정렬*/
+  
+}
+#header_part .main1>li:hover .main2 {
+  left: 0  ;
+}
+
+#header_part .main1>li a {
+  display: block;
+}
+
+.main1>li a:hover {
+  font-weight: bold;
+}
+
+#header_part .main2 {
+  width:10%;  
+  position: absolute ; 
+  top: 50px;
+  left: -9999px;  /*마우스 포인트 띠면 안보이게*/
+  width: 100%;  /* 카테고리 가로 줄어든다. : 200% 하면  깔끔하게 가로로 나옴 */ 
+  padding: 0px;
+  
+}

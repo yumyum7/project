@@ -1,0 +1,62 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content">
+    <h1>프로젝트 만들기</h1>
+    <form  th:action="@{/project/create}" th:object="${projectForm}" method="post" enctype="multipart/form-data">
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+        </div>
+        <div>
+            카테고리
+            <select name="pCate"  id="">
+                <option disabled="disabled" selected="selected">프로젝트 카테고리를 선택하세요.</option>
+                <option value="웹툰리소스">웹툰 리소스</option>
+                <option value="반려동물">반려동물</option>
+                <option value="주얼리">주얼리</option>
+                <option value="음악">음악</option>
+            </select>
+        </div>
+
+        <div>
+            프로젝트 제목
+            <input name="pName" type="text">
+        </div>
+
+        <div>
+            프로젝트 소개
+            <textarea name="pDesc" id="" cols="30" rows="10"></textarea>
+        </div>
+
+        <div>
+            대표 이미지
+            <input multiple type="file" name="file" accept="image/*">
+        </div>
+        <div>
+            이미지 설명
+            <textarea name="imgDesc" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            목표금액
+            <input name="pGoal" type="number">
+        </div>
+
+        <div>
+            펀딩 날짜
+            <div>
+                시작일 <input name="pSdate" type="date">
+            </div>
+            <div>
+                종료일 <input name="pEdate" type="date">
+            </div>
+        </div>
+
+        <div>
+            창작자 소개
+            <textarea name="pCreator" id="" cols="30" rows="5"></textarea>
+        </div>
+
+        <div>
+            <button type="submit">제출</button>
+        </div>
+    </form>
+</div>
+</html>

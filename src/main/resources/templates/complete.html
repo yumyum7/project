@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/complete.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="wrapper">
+	
+		<!-- header section -->
+		<header>
+			<div id="title">
+				<a th:href="@{/project/list}" id="tb">tumblcat</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>후원 완료</span>
+			</div>
+		</header>
+		<hr>
+		
+		<!-- main section -->
+		<main>
+			<div class="box">
+				<h1>후원이<br />완료되었습니다!</h1>
+				<br /><br /><br /><br /><br />
+				<input type="button" value="메인페이지" class="btn" onclick="location.href='/project/list'">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" value="프로젝트" class="btn" onclick="location.href='/invest/or'">
+			</div>
+		</main>
+	</div>
+</body>
+</html>

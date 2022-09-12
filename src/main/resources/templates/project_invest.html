@@ -1,0 +1,139 @@
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="./js/showmemyblog.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link th:href="@{/css/project_invest.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="wrapper">
+	
+		<!-- header section -->
+		<header>
+			<div id="title">
+				<span id="tb">텀블캣</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>프로젝트 후원하기</span>
+			</div>
+		</header>
+		<hr>
+		
+		<!-- main section -->
+		<main id="m_content">
+			<div>
+				<img src="/img/cat.jpg">
+				<span>카테고리</span>
+				<br />
+				<span id="sell">판매할 프로젝트 명</span>
+				<br />
+				<span>모인 후원 금액</span>
+				<span>남은 기간</span>
+			</div>
+		</main>
+		<br />
+		
+		<!-- section section -->
+		<section id="s_content">
+			<span>선물 정보</span>
+			<br />
+			<table>
+				<tr>
+					<th>선물 구성</th>
+					<td>선물 없이 후원하기</td>
+				</tr>
+				<tr>
+					<th>선물 금액</th>
+					<td>1000원</td>
+				</tr>
+			</table>
+			<br /><br />
+				
+			<span>후원자 정보</span>
+			<table>
+				<tr>
+					<th>연락처</th>
+					<td>010-1234-5678</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td>asdf@naver.com</td>
+				</tr>
+				<tr>
+					<td colspan="2">* 위 연락처와 이메일로 후원 관련 소식이 전달됩니다.<br />
+								* 연락처 및 이메일 변경은 설정 > 계정 설정에서 가능합니다.
+					</td>
+				</tr>
+			</table>
+			<br /><br />
+				
+			<span>결제 수단</span>
+			<table>
+				<tr>
+					<td colspan="2"><input type="radio">카드 및 계좌</td>
+				</tr>
+				<tr>
+					<td rowspan="2" width="100"><img src="/img/kb_card.png"></td>
+					<th>국민카드</th>
+				</tr>
+				<tr>
+					<th>1234-4567-1234-4568</th>
+				</tr>
+			</table>
+		</section>
+		
+		<!-- aside section -->
+		<aside id="right-side">
+			<div id="right">
+				<table>
+					<tr>
+						<th>최종 후원 금액</th>
+						<td>1000원</td>
+					</tr>
+				</table>
+				<span>프로젝트 성공시, 결제가 진행됩니다. 프로젝트가 무산되거나 중단된 경우, 결제는 자동으로 취소됩니다.</span>
+				<br /><br />
+				<input type="checkbox">개인정보 제 3자 제공 동의
+				<br />
+				<input type="checkbox">후원 유의사항 확인
+				<br /><br />
+				<input class="submit-btn" type="submit" value="후원하기" onclick="iamport()" />
+			</div>
+		</aside>
+	</div>
+	<script>
+	function iamport(){
+		//가맹점 식별코드
+		IMP.init('imp01556566');
+		IMP.request_pay({
+		    pg : 'kcp',   //kcp, kicc (현재 2개 테스연동해둠,kcp는 kicc보다 로딩시간김) 
+		    pay_method : 'card',
+		    merchant_uid : 'merchant_' + new Date().getTime(),
+		    name : '프로젝트' , //결제창에서 보여질 이름
+		    amount : 1000, //실제 결제되는 가격
+		    buyer_email : 'iamport@siot.do',
+		    buyer_name : '구매자',
+		    buyer_tel : '010-1234-5678',
+		    buyer_addr : '서울 영등포구',
+		    buyer_postcode : '123-456',
+		}, function(rsp) {
+			console.log(rsp);
+		    if ( rsp.success ) {
+		    	var msg = '결제가 완료되었습니다.';
+		       // msg += '고유ID : ' + rsp.imp_uid;
+		       // msg += '상점 거래ID : ' + rsp.merchant_uid;
+		        msg += '결제 금액 : ' + rsp.paid_amount;
+		       // msg += '카드 승인번호 : ' + rsp.apply_num;
+		    } else {
+		    	 var msg = '결제에 실패하였습니다.';
+		         msg += '에러내용 : ' + rsp.error_msg;
+		    }
+		    alert(msg);
+		    location.href='http://localhost:8080/invest/complete'
+		});
+	}
+	</script>
+</body>
+</html>
